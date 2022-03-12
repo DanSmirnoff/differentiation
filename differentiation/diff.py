@@ -35,7 +35,7 @@ def distr(equation):                #This block distribute equation for easier t
                 divider += equation[j]
                 j += 1
             return methods.div(equation[:i], divider)
-        elif equation[i] == '(' and equation[i-1] != '*' and equation[i-1] != '+':        #���������� ����������� ���� '(....'
+        elif equation[i] == '(' and equation[i-1] != '*' and equation[i-1] != '+':        #обработать конструкции вида '(....'
             return methods.comp(equation[:i], equation[i+1:-1])
         elif equation[i] == '^' and equation[i-1] == 'x':
             power = ''
