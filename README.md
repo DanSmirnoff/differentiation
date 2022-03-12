@@ -1,1 +1,1 @@
-differentiation
+This program can differentiate functions
