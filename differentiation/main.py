@@ -9,4 +9,4 @@ equation = diff.distr(equation)
 print('diff check - ' + equation)
 print(simplif.simplificator(equation))
 
-#print(helpFunc.replacer('xxxx', '.', '.g))
+#print(helpFunc.founder('(1)*(x)+(x)*(1)', '*1')
