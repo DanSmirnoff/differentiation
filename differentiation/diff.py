@@ -14,6 +14,18 @@ def converter(equation):        #This block convertes all '(x)' for nothing beca
                 else:
                     equation = equation[:i]
         i += 1
+    index = helpFunc.founder(equation, '^')
+    for i in index:
+        if equation[i-1] == ')':
+            part1 = helpFunc.goUntil(equation, i-2, -1, ['('])
+        else:
+            part1 = helpFunc.goUntil(equation, i-1, -1, ['*','/','+','-','^'])
+        if equation[i+1] == '(':
+            part2 = helpFunc.goUntil(equation, i+2, 1, [')'])
+        else:
+            part2 = helpFunc.goUntil(equation, i+1, 1, ['*','/','+','-','^'])
+    print(part1 + '^' + part2)
+    equation = helpFunc.replacer(equation, part1 + '^' + part2, 'power(' + part1 + ',' + part2 + ')', '')
     print('converter check - ' + equation)
     return equation
 

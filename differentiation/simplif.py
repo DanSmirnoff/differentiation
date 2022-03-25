@@ -17,6 +17,8 @@ def simplificator(equation):
             if i+2 < len(equation):
                 if equation[i+2] == '.':
                     exceptions.append(i)
+        for i in range(len(exceptions)):
+            exceptions[i] -= 1
         equation = helpFunc.replacer(equation, 'x^0', '1', exceptions)
     parts = helpFunc.founder(equation, '1*')
     exceptions = []
