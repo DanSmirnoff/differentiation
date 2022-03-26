@@ -4,28 +4,57 @@ import helpFunc
 import simplif
 
 
-def converter(equation):        #This block convertes all '(x)' for nothing because we don't need it and removes ' '
+def converter(equation):
+    powerCounter = len(helpFunc.founder(equation, '^'))               #This block convertes a^b to power(a,b)
     i = 0
+    while powerCounter != 0:
+        for j in range(len(equation)):
+            if equation[j] == '^':
+                i = j
+                break
+        p1 = False
+        p2 = False
+        if equation[i-1] == ')':
+            print('a')
+            p1 = True
+            part1 = equation[helpFunc.bracketFounder(equation, i-1, -1) + 1 : i-1]
+            print(part1)
+        else:
+            part1 = helpFunc.goUntil(equation, i-1, -1, ['*','/','+','-','^','(',','])
+        if equation[i+1] == '(':
+            p2 = True
+            part2 = equation[i+2 : helpFunc.bracketFounder(equation, i+1, 1)]
+        else:
+            part2 = helpFunc.goUntil(equation, i+1, 1, ['*','/','+','-','^', ')',','])
+        print(part1 + '^' + part2)
+
+        if p1 and p2:
+            equation = equation.replace('(' +  part1 + ')' + '^' + '(' + part2 + ')', '(' +'power(' + part1 + ',' + part2 + ')' + ')', 1)
+            print('++')
+        elif p1 and not p2:
+            equation = equation.replace('(' +  part1 + ')' + '^' + part2, '(' +'power(' + part1 + ',' + part2 + ')' + ')', 1)
+            print('+-')
+        elif p2 and not p1:
+            equation = equation.replace(part1 + '^' + '(' + part2 + ')', '(' +'power(' + part1 + ',' + part2 + ')' + ')', 1)
+            print('-+')
+        else:
+            equation = equation.replace(part1 + '^' + part2, '(' +'power(' + part1 + ',' + part2 + ')' + ')', 1)
+            print('--')
+        powerCounter -= 1
+
+        print(equation + '&')
+
+
+    i = 0                     #This block convertes all '(x)' for nothing because we don't need it and removes ' '
     while i < len(equation):
         if equation[i] == '(':
-            if equation[i + 1] == 'x':
+            if equation[i+1] == 'x' and equation[i+2] == ')':
                 if i+3 < len(equation):
                     equation = equation[:i] + equation[i+3:]
                 else:
                     equation = equation[:i]
-        i += 1
-    index = helpFunc.founder(equation, '^')
-    for i in index:
-        if equation[i-1] == ')':
-            part1 = helpFunc.goUntil(equation, i-2, -1, ['('])
-        else:
-            part1 = helpFunc.goUntil(equation, i-1, -1, ['*','/','+','-','^'])
-        if equation[i+1] == '(':
-            part2 = helpFunc.goUntil(equation, i+2, 1, [')'])
-        else:
-            part2 = helpFunc.goUntil(equation, i+1, 1, ['*','/','+','-','^'])
-    print(part1 + '^' + part2)
-    equation = helpFunc.replacer(equation, part1 + '^' + part2, 'power(' + part1 + ',' + part2 + ')', '')
+        i += 1         
+
     print('converter check - ' + equation)
     return equation
 

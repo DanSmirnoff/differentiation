@@ -49,3 +49,42 @@ def goUntil(equation, a, way, stop):       #records part of equation from index 
             if i == -1:
                 break
     return part
+
+def bracketFounder(equation, a, way):           #find bracket that close (or open) brakcet on 'a' place
+    if way == 1:
+        if equation[a] != '(':
+            print('exception: equation[a] != "("')
+            return
+        else:
+            openBracket = 1
+            closeBracket = 0
+            i = a
+            while openBracket != closeBracket:
+                i += 1
+                if i == len(equation):
+                    print('exception: wrong brackets places and/or count')
+                    break
+                if equation[i] == '(':
+                    openBracket += 1
+                elif equation[i] == ')':
+                    closeBracket += 1
+        return i
+
+    elif way == -1:
+        if equation[a] != ')':
+            print('exception: equation[a] != ")"')
+            return
+        else:
+            openBracket = 0
+            closeBracket = 1
+            i = a
+            while openBracket != closeBracket:
+                i -= 1
+                if i == -1:
+                    print('exception: wrong brackets places and/or count')
+                    break
+                if equation[i] == '(':
+                    openBracket += 1
+                elif equation[i] == ')':
+                    closeBracket += 1
+        return i

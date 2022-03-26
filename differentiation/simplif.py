@@ -3,7 +3,7 @@ import helpFunc
 def simplificator(equation):
     print('check')
     parts = helpFunc.founder(equation, '^1')
-    exceptions = []         #��� ����������, ����� ���������� ����� ������ ��������
+    exceptions = []         
     if len(parts) != 0:
         for i in parts:
             if i+2 < len(equation):
