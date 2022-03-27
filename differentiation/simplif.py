@@ -2,6 +2,10 @@ import helpFunc
 
 def simplificator(equation):
     print('check')
+    parts = helpFunc.founder(equation, 'power(x,1)')
+    exceptions = []
+    equation = helpFunc.replacer(equation, 'power(x,1)', 'x', exceptions)
+
     parts = helpFunc.founder(equation, '^1')
     exceptions = []         
     if len(parts) != 0:
@@ -32,8 +36,8 @@ def simplificator(equation):
     exceptions = []
     if len(parts) > 0:
         for i in parts:
-            if i < len(equation):
-                if equation[i+1].isdigit():
+            if i + 2 < len(equation):
+                if equation[i+2].isdigit():
                     exceptions.append(i)
         equation = helpFunc.replacer(equation, '*1', '', exceptions)
 

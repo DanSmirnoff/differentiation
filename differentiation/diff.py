@@ -64,9 +64,9 @@ def distr(equation):                #This block distribute equation for easier t
     print('simplificator check - ' + equation)
     for i in range(len(equation)):
         if equation == 'x':
-            return simpleDeriv.simplePow('x', '1')
+            return '1'
         elif equation == 'sin' or equation == 'cos' or equation == 'tg' or equation == 'ctg':
-            return simpleDeriv.trig(equation)
+            return simpleDeriv.diffTrig(equation)
         elif equation[i] == '*':
             return methods.multi(equation[:i], equation[i+1:])
         elif equation[i] == '/':
@@ -78,16 +78,11 @@ def distr(equation):                #This block distribute equation for easier t
             return methods.div(equation[:i], divider)
         elif equation[i] == '(' and equation[i-1] != '*' and equation[i-1] != '+':        #обработать конструкции вида '(....'
             return methods.comp(equation[:i], equation[i+1:-1])
-        elif equation[i] == '^' and equation[i-1] == 'x':
-            power = ''
-            if equation[i+1] == '(':
-                j = i + 2
-                while equation[j] != ')':
-                    power += equation[j] 
-                    j += 1               
-            else:               #user-friendly 5 lines of code
-                j = i + 1
-                while j < len(equation) and equation[j] != '+' and equation[j] != '-' and equation[j] != '*' and equation[j] != '/' and equation[j] != '^':
-                    power += equation[j] 
-                    j += 1              
-            return simpleDeriv.simplePow(equation[:i], power)
+        elif equation[i] == 'p':
+            if equation[i+1:i+5] == 'ower':
+                index = helpFunc.founder(equation,',')
+                j = index[0]
+                a = i+5
+                b = helpFunc.bracketFounder(equation, a, 1)
+                print(equation[a+1 : j], equation[j+1 : b])
+                return simpleDeriv.diffPower(equation[a+1 : j], equation[j+1 : b])
