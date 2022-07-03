@@ -23,6 +23,9 @@
   <ItemGroup>
     <Compile Include="diff.py" />
     <Compile Include="helpFunc.py" />
+    <Compile Include="logic.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="main.py" />
     <Compile Include="methods.py" />
     <Compile Include="simpleDeriv.py" />

@@ -11,7 +11,7 @@ import simpleDeriv
 equation = diff.converter(input())
 equation = diff.distr(equation)
 print('diff check - ' + equation)
-print(simplif.simplificator(equation))
+print('\n' + 'answer -', simplif.simplificator(equation) + '\n')
 
 #print(helpFunc.founder('(1)*(x)+(x)*(1)', '*1'))
 

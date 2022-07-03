@@ -1,7 +1,14 @@
 import helpFunc
 
 def simplificator(equation):
-    print('check')
+    if len(equation) == 0:
+        print('len(equation) == 0')
+        return equation
+
+    if equation[0] == '(' and equation[-1] == ')' and helpFunc.bracketFounder(equation, 0, 1) == len(equation)-1:
+        print('()')
+        equation = equation[1 : -1]
+
     parts = helpFunc.founder(equation, 'power(x,1)')
     exceptions = []
     equation = helpFunc.replacer(equation, 'power(x,1)', 'x', exceptions)
@@ -40,5 +47,8 @@ def simplificator(equation):
                 if equation[i+2].isdigit():
                     exceptions.append(i)
         equation = helpFunc.replacer(equation, '*1', '', exceptions)
+
+    equation = helpFunc.replacer(equation, '*(1)', '', exceptions = '')  # Possibly break smth
+    equation = helpFunc.replacer(equation, '(1)*', '', exceptions = '')
 
     return equation

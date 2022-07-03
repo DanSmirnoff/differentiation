@@ -2,6 +2,9 @@ import simpleDeriv
 import diff
 import helpFunc
 
+def summ(a,b):
+    return diff.distr(a) + '+' + diff.distr(b)
+
 def multi(a, b):    #a*b
     c = diff.distr(a)
     d = diff.distr(b)
