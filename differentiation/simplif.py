@@ -61,8 +61,12 @@ def simplificator(equation):
     equation = equation.replace('ctg(x)', 'ctg', 1)
 
 
-    exceptions = helpFunc.founder(equation, '-1')                  # There is hard to deal with things like -sin, so this thing replace it to (-1)*sin
-    equation = helpFunc.replacer(equation, '-', '(-1)*', exceptions)        # Maybe in future i fix it, because it isn't optimized
+    exceptions = []
+    minuses = helpFunc.founder(equation, '-')                  # There is hard to deal with things like -sin, so this thing replace it to (-1)*sin
+    for i in range(len(minuses)):                              # Maybe in future i fix it, because it isn't optimized
+        if equation[minuses[i]+1].isdigit():
+            exceptions.append(minuses[i])
+    equation = helpFunc.replacer(equation, '-', '(-1)*', exceptions)        
 
     print(eq1, ' -> ', equation, ' -- simplificator check')
 
