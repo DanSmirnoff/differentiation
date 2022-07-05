@@ -1,6 +1,9 @@
 import helpFunc
 
 def simplificator(equation):
+
+    eq1 = equation      # for tracing changes
+
     if len(equation) == 0:
         print('len(equation) == 0')
         return equation
@@ -50,5 +53,17 @@ def simplificator(equation):
 
     equation = helpFunc.replacer(equation, '*(1)', '', exceptions = '')  # Possibly break smth
     equation = helpFunc.replacer(equation, '(1)*', '', exceptions = '')
+
+
+    equation = equation.replace('sin(x)', 'sin', 1)         
+    equation = equation.replace('cos(x)', 'cos', 1)
+    equation = equation.replace('tg(x)', 'tg', 1)
+    equation = equation.replace('ctg(x)', 'ctg', 1)
+
+
+    exceptions = helpFunc.founder(equation, '-1')                  # There is hard to deal with things like -sin, so this thing replace it to (-1)*sin
+    equation = helpFunc.replacer(equation, '-', '(-1)*', exceptions)        # Maybe in future i fix it, because it isn't optimized
+
+    print(eq1, ' -> ', equation, ' -- simplificator check')
 
     return equation

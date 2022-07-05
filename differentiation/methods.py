@@ -8,6 +8,7 @@ def summ(a,b):
 def multi(a, b):    #a*b
     c = diff.distr(a)
     d = diff.distr(b)
+    print('(' + c + ')' + '*' + '(' + b + ')' + '+' + '(' + a + ')' + '*' + '(' + d + ') -- multy check')
     return '(' + c + ')' + '*' + '(' + b + ')' + '+' + '(' + a + ')' + '*' + '(' + d + ')'
 
 def comp(a, b):     #a(b)

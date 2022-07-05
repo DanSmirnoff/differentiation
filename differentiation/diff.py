@@ -42,20 +42,8 @@ def converter(equation):
             print('--')
         powerCounter -= 1
 
-        print(equation + '&')
 
-
-    i = 0                     #This block convertes all '(x)' for nothing because we don't need it and removes ' '
-    while i < len(equation):
-        if equation[i] == '(':
-            if equation[i+1] == 'x' and equation[i+2] == ')':
-                if i+3 < len(equation):
-                    equation = equation[:i] + equation[i+3:]
-                else:
-                    equation = equation[:i]
-        i += 1         
-
-    print('converter check - ' + equation)
+    print(equation, ' -- converter check')
     return equation
 
 
@@ -64,7 +52,7 @@ def distr(equation):                #This block distribute equation for easier t
     
     while True:         #kostil no rabotaet\\\
         if equation[0] == '(' and equation[-1] == ')' and helpFunc.bracketFounder(equation, 0, 1) == len(equation)-1:   
-            print('()')
+            print('(...)')
             equation = equation[1 : -1]
         else:
             break
@@ -145,6 +133,8 @@ def distr(equation):                #This block distribute equation for easier t
             return '1'
         elif equation == 'sin' or equation == 'cos' or equation == 'tg' or equation == 'ctg':
             return simpleDeriv.diffTrig(equation)
+        elif equation.isdigit() or equation[0] == '-' and equation[1:].isdigit():
+            return '0'
         
     #часть кода ниже нахуй не нужна но пусть будет на всякий
     print('бля как сюда код зашел')
