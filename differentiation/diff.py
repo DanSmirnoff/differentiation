@@ -133,7 +133,9 @@ def distr(equation):                #This block distribute equation for easier t
             return '1'
         elif equation == 'sin' or equation == 'cos' or equation == 'tg' or equation == 'ctg':
             return simpleDeriv.diffTrig(equation)
-        elif equation.isdigit() or equation[0] == '-' and equation[1:].isdigit():
+        elif equation == 'arcsin' or equation == 'arccos' or equation == 'arctg' or equation == 'arcctg':
+            return simpleDeriv.diffArc(equation)
+        elif helpFunc.isNumber(equation):
             return '0'
         
     #часть кода ниже нахуй не нужна но пусть будет на всякий

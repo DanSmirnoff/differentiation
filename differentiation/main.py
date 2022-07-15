@@ -5,6 +5,7 @@ import helpFunc
 import time
 import simpleDeriv
 
+#print(helpFunc.isNumber(input()))
 
 #print(simpleDeriv.diffPower('sin','cos'))
 

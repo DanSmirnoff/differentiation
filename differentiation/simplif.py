@@ -59,6 +59,10 @@ def simplificator(equation):
     equation = equation.replace('cos(x)', 'cos', 1)
     equation = equation.replace('tg(x)', 'tg', 1)
     equation = equation.replace('ctg(x)', 'ctg', 1)
+    equation = equation.replace('arcsin(x)', 'arcsin', 1)         
+    equation = equation.replace('arccos(x)', 'arccos', 1)
+    equation = equation.replace('arctg(x)', 'arctg', 1)
+    equation = equation.replace('arcctg(x)', 'arcctg', 1)
 
 
     exceptions = []

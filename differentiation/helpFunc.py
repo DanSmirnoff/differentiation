@@ -88,3 +88,17 @@ def bracketFounder(equation, a, way):           #find bracket that close (or ope
                 elif equation[i] == ')':
                     closeBracket += 1
         return i
+
+
+def isNumber(equation):
+    if equation.isdigit():          #12345
+        return True
+    dots = founder(equation, '.')
+    if len(dots) == 0:              #-12345
+        if equation[0] == '-' and equation[1:].isdigit():   
+            return True
+    elif len(dots) == 1:            #12.345 and -12.345
+        if equation[0] == '-' and equation[1:dots[0]].isdigit() and equation[dots[0]+1:].isdigit() or equation[:dots[0]].isdigit() and equation[dots[0]+1:].isdigit():
+            return True
+    else:
+        return False

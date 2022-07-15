@@ -51,3 +51,14 @@ def diffLog(function1, function2):
             return 'power(log(e,' + function1 + '),-1)*' + 'power(' + function2  + ',-1)*(' + diff.distr(function2) + ')'
     else:                               # maybe needed to be fixed
         return diff.distr('log(e,' + function1 + ')*power(log(e,' + function2 + '),-1)')
+
+def diffArc(function):
+    if function == 'arcsin':
+        return 'power(1-power(x,2),-0.5)'
+    if function == 'arccos':
+        return '-power(1-power(x,2),-0.5)'
+    if function == 'arctg':
+        return 'power(1+power(x,2),-1)'
+    if function == 'arcctg':
+        return '-power(1+power(x,2),-1)'
+        
