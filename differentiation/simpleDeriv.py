@@ -32,7 +32,7 @@ def diffPower(function1, function2):
                 else:                           #sin^(-2)
                     return '(' + function2 + ')*' + 'power(' + function1 + ',' + str(int(function2) - 1) + ')*(' + diff.distr(function1) + ')'
         else:                           #e.g sin^cos
-            return '(' + diff.distr(function1) + '*' + function2 + '*power(' + function1 + ',-1)' + '+' + 'log(e,' + function1 + ')*' + diff.distr(function2) + ')*power(' + function1 + ',' + function2 + ')'
+            return '(' +  diff.distr('log(e,' + function1 + ')*(' + function2 + ')') + ')*power(' + function1 + ',' + function2 + ')'
 
 
 def diffTrig(function):     #just simple derivates of triginometric functions
@@ -48,7 +48,9 @@ def diffTrig(function):     #just simple derivates of triginometric functions
 def diffLog(function1, function2):
     if function1 == 'e':                
         if helpFunc.isNumber(function2):         # e.g log(e, 2)
-            return '0'  
+            return '0'
+        elif function2 == 'e':
+            return '0'
         else:                           # e.g log(e, sin)
             return 'power(' + function2  + ',-1)*(' + diff.distr(function2) + ')'
     elif helpFunc.isNumber(function1):
@@ -57,7 +59,7 @@ def diffLog(function1, function2):
         else:  
             return 'power(log(e,' + function1 + '),-1)*' + 'power(' + function2  + ',-1)*(' + diff.distr(function2) + ')'
     else:                               # maybe needed to be fixed
-        return diff.distr('log(e,' + function1 + ')*power(log(e,' + function2 + '),-1)')
+        return diff.distr('log(e,' + function2 + ')*power(log(e,' + function1 + '),-1)')
 
 def diffArc(function):
     if function == 'arcsin':

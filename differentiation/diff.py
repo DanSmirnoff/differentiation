@@ -20,12 +20,12 @@ def converter(equation):
             part1 = equation[helpFunc.bracketFounder(equation, i-1, -1) + 1 : i-1]
             print(part1)
         else:
-            part1 = helpFunc.goUntil(equation, i-1, -1, ['*','/','+','-','^','(',','])
+            part1 = helpFunc.goUntil(equation, i-1, -1, ['*','/','+','-','^','('])    
         if equation[i+1] == '(':
             p2 = True
             part2 = equation[i+2 : helpFunc.bracketFounder(equation, i+1, 1)]
         else:
-            part2 = helpFunc.goUntil(equation, i+1, 1, ['*','/','+','-','^', ')',','])
+            part2 = helpFunc.goUntil(equation, i+1, 1, ['*','/','+','-','^', ')'])      
         print(part1 + '^' + part2)
 
         if p1 and p2:

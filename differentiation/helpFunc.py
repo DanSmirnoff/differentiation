@@ -102,3 +102,30 @@ def isNumber(equation):
             return True
     else:
         return False
+
+
+def returnTo(equation):             #returns power(a,b) to a^b, sin to sin(x) and so on...
+    commas = founder(equation, ',')
+    for i in range(len(equation)):
+        print(equation[i])
+        if equation[i] == 'p':
+            for index in commas:
+                if index > i:
+                    index1 = index
+                    break
+            closeBracket = bracketFounder(equation, i+5, 1)
+            part1 = equation[i+6:index1]
+            part2 = equation[index1 + 1:closeBracket]
+            equation = replacer(equation, 'power(' + part1 + ',' + part2 + ')', '(' + part1 + ')^(' + part2 + ')', [])
+
+        #if (equation[i] == 's' or equation[i] == 'c') and equation[i+3] != '(':
+        #    equation = equation[:i+3] + '(x)' + equation[i+3:]
+        #elif equation[i] == 't' and equation[i+3] != '(':
+        #    equation = equation[:i+2] + '(x)' + equation[i+2:]
+        #elif equation[i] == 'a':
+        #    if equation[i+3] == 's' or equation[i+3] == 'c' and equation[i+6] != '(':
+        #        equation = equation = equation[:i+6] + '(x)' + equation[i+6:]
+        #    elif equation[i+3] == 't' and equation[i+6] != '(':
+        #        equation = equation[:i+5] + '(x)' + equation[i+5:]
+
+    return equation

@@ -70,6 +70,9 @@ def simplificator(equation):
     for i in range(len(minuses)):                              # Maybe in future i fix it, because it isn't optimized
         if equation[minuses[i]+1].isdigit():
             exceptions.append(minuses[i])
+        if minuses[i]-1 >= 0:
+            if equation[minuses[i]-1] == '(':
+                exceptions.append(minuses[i])
     equation = helpFunc.replacer(equation, '-', '+(-1)*', exceptions)
     if equation[0] == '+':
         equation = equation[1:]

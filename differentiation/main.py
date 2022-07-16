@@ -4,6 +4,9 @@ import simplif
 import helpFunc
 import time
 import simpleDeriv
+import math
+#import sympy
+
 
 #print(helpFunc.isNumber(input()))
 
@@ -12,7 +15,17 @@ import simpleDeriv
 equation = diff.converter(input())
 equation = diff.distr(equation)
 print('diff check - ' + equation)
-print('\n' + 'answer -', simplif.simplificator(equation) + '\n')
+equation = simplif.simplificator(equation)
+print('\n' + 'answer -', equation + '\n')
+
+#print()
+#print('Enter number: ')
+#number = int(input())
+#equation = helpFunc.returnTo(equation)
+#print(equation, ' -- modified equation')
+#equation1 = sympy.sympify(equation)
+#print(equation1.subs('x', number))
+
 
 #print(helpFunc.founder('(1)*(x)+(x)*(1)', '*1'))
 
